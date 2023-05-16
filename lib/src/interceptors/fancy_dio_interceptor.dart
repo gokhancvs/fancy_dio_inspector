@@ -1,19 +1,32 @@
 import 'package:dio/dio.dart';
 import 'package:fancy_dio_inspector/src/loggers/fancy_dio_logger.dart';
 import 'package:fancy_dio_inspector/src/models/models.dart';
+import 'package:fancy_dio_inspector/src/typedefs/typedefs.dart';
 
 class FancyDioInterceptor extends Interceptor {
   FancyDioLogger get logger => FancyDioLogger.instance;
 
   final FancyDioInspectorOptions options;
 
-  FancyDioInterceptor([this.options = const FancyDioInspectorOptions()]) {
+  final OnRequestCreated? onRequestCreated;
+  final OnResponseCreated? onResponseCreated;
+  final OnErrorCreated? onErrorCreated;
+
+  FancyDioInterceptor({
+    this.options = const FancyDioInspectorOptions(),
+    this.onRequestCreated,
+    this.onResponseCreated,
+    this.onErrorCreated,
+  }) {
     logger.options = options;
   }
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    logger.log(options);
+    if (this.options.logRequests) {
+      logger.log(options);
+      onRequestCreated?.call(options);
+    }
 
     handler.next(options);
   }
@@ -23,14 +36,20 @@ class FancyDioInterceptor extends Interceptor {
     Response<dynamic> response,
     ResponseInterceptorHandler handler,
   ) {
-    logger.log(response);
+    if (options.logResponses) {
+      logger.log(response);
+      onResponseCreated?.call(response);
+    }
 
     handler.next(response);
   }
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
-    logger.log(err);
+    if (options.logErrors) {
+      logger.log(err);
+      onErrorCreated?.call(err);
+    }
 
     handler.next(err);
   }

@@ -22,10 +22,6 @@ class FancyDioLogger {
     final now = DateTime.now();
 
     if (data is RequestOptions) {
-      if (!options.logRequests) {
-        return;
-      }
-
       _apiRequests.insert(
         0,
         NetworkRequestModel(
@@ -40,10 +36,6 @@ class FancyDioLogger {
 
       _apiRequests = _apiRequests.take(options.maxLogs).toList();
     } else if (data is Response) {
-      if (!options.logResponses) {
-        return;
-      }
-
       _apiResponses.insert(
         0,
         NetworkResponseModel(
@@ -60,10 +52,6 @@ class FancyDioLogger {
 
       _apiResponses = _apiResponses.take(options.maxLogs).toList();
     } else if (data is DioError) {
-      if (!options.logErrors) {
-        return;
-      }
-
       _apiErrors.insert(
         0,
         NetworkErrorModel(
