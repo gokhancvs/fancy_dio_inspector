@@ -2,7 +2,7 @@
 
 A [Dio](https://pub.dev/packages/dio) inspector that allows you to log & copy every request, response and error.
 
-<img src="assets/screenshots/screenshot_1.png" height="500px">
+<img src="https://raw.githubusercontent.com/gokhancvs/fancy_dio_inspector/main/assets/screenshots/screenshot_1.png" height="500px">
 
 ---
 
