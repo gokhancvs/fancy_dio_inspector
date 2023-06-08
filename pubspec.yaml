@@ -6,14 +6,14 @@ homepage: https://github.com/gokhancvs/fancy_dio_inspector
 repository: https://github.com/gokhancvs/fancy_dio_inspector
 issue_tracker: https://github.com/gokhancvs/fancy_dio_inspector/issues
 
-version: 1.2.2
+version: 1.2.2+1
 
 screenshots:
   - description: 'Fancy Dio Inspector'
     path: assets/screenshots/screenshot_1.png
 
 environment:
-  sdk: '>=2.17.6 <3.0.0'
+  sdk: '>=2.17.6 <4.0.0'
   flutter: '>=3.0.5'
 
 dependencies:

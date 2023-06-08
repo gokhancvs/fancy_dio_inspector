@@ -1,3 +1,7 @@
+## 1.2.2+1
+
+- Upgrade Dart SDK version from `<3.0.0` to `<4.0.0`.
+
 ## 1.2.2
 
 - Upgrade [Dio](https://pub.dev/packages/dio) from `5.1.2` to `5.2.0`.
