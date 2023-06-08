@@ -1,4 +1,4 @@
-## 1.2.2+1
+## 1.2.3
 
 - Upgrade Dart SDK version from `<3.0.0` to `<4.0.0`.
 
