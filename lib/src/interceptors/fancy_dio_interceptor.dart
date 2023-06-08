@@ -45,7 +45,7 @@ class FancyDioInterceptor extends Interceptor {
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     if (options.logErrors) {
       logger.log(err);
       onErrorCreated?.call(err);

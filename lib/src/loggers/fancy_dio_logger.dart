@@ -17,7 +17,7 @@ class FancyDioLogger {
   List<NetworkResponseModel> get apiResponses => [..._apiResponses];
   List<NetworkErrorModel> get apiErrors => [..._apiErrors];
 
-  /// [T] must be either [RequestOptions], [Response] or [DioError].
+  /// [T] must be either [RequestOptions], [Response] or [DioException].
   void log<T>(T data) {
     final now = DateTime.now();
 
@@ -51,7 +51,7 @@ class FancyDioLogger {
       );
 
       _apiResponses = _apiResponses.take(options.maxLogs).toList();
-    } else if (data is DioError) {
+    } else if (data is DioException) {
       _apiErrors.insert(
         0,
         NetworkErrorModel(
