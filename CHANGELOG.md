@@ -1,3 +1,8 @@
+## 1.3.0
+
+- **BREAKING CHANGE:** Remove `FancyDioInspectorView`'s `onClosePressed` parameter.
+- Add `leading` and `actions` parameters to `FancyDioInspectorView` in order to give more control over the app bar.
+
 ## 1.2.3
 
 - Upgrade Dart SDK version from `<3.0.0` to `<4.0.0`.

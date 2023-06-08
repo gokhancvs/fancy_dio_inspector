@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
       context,
       MaterialPageRoute(
         builder: (context) => FancyDioInspectorView(
-          onClosePressed: () {},
+          leading: CloseButton(onPressed: Navigator.of(context).pop),
         ),
       ),
     );

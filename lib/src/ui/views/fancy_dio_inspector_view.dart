@@ -1,7 +1,6 @@
 import 'package:fancy_dio_inspector/src/l10n/l10n.dart';
 import 'package:fancy_dio_inspector/src/loggers/fancy_dio_logger.dart';
 import 'package:fancy_dio_inspector/src/models/models.dart';
-import 'package:fancy_dio_inspector/src/theme/fancy_colors.dart';
 import 'package:fancy_dio_inspector/src/ui/widgets/widgets.dart';
 import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
@@ -12,13 +11,16 @@ class FancyDioInspectorView extends StatelessWidget {
   /// If this is `null`, the default options will be used.
   final FancyDioInspectorTileOptions tileOptions;
 
-  /// A callback that is called when the close button is pressed.
-  /// If this is `null`, the close button will not be displayed.
-  final VoidCallback? onClosePressed;
+  /// [leading] is used to place a widget before the title.
+  final Widget? leading;
+
+  /// [actions] are used to place widgets after the title.
+  final List<Widget>? actions;
 
   const FancyDioInspectorView({
     this.tileOptions = const FancyDioInspectorTileOptions(),
-    this.onClosePressed,
+    this.leading,
+    this.actions,
     super.key,
   });
 
@@ -60,16 +62,8 @@ class FancyDioInspectorView extends StatelessWidget {
             centerTitle: true,
             title: const Text(FancyStrings.networkTitle),
             bottom: TabBar(tabs: tabs),
-            actions: [
-              if (onClosePressed != null)
-                IconButton(
-                  onPressed: onClosePressed,
-                  icon: const Icon(
-                    Icons.close,
-                    color: FancyColors.white,
-                  ),
-                ),
-            ],
+            leading: leading,
+            actions: actions,
           ),
           body: TabBarView(children: tabBarViews),
         ),
