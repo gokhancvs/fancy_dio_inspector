@@ -1,3 +1,7 @@
+## 1.4.0
+
+- **NEW FEATURE:** Add `consoleOptions` parameter to `FancyDioInspectorOptions` in order to print requests, responses and errors to the console.
+
 ## 1.3.0
 
 - **BREAKING CHANGE:** Remove `FancyDioInspectorView`'s `onClosePressed` parameter.
