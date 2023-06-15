@@ -101,7 +101,13 @@ class DioClient {
     _dio = Dio(BaseOptions(baseUrl: 'https://reqres.in/api'));
 
     /// Add the `FancyDioInterceptor` to the `Dio` client.
-    _dio.interceptors.add(FancyDioInterceptor());
+    _dio.interceptors.add(
+      FancyDioInterceptor(
+        options: const FancyDioInspectorOptions(
+          consoleOptions: FancyDioInspectorConsoleOptions(verbose: true),
+        ),
+      ),
+    );
   }
 
   Future<LoginResponse?> login({bool success = true}) async {
