@@ -12,7 +12,7 @@ Add dependency to your `pubspec.yaml` file.
 
 ```dart
 dependencies:
-  fancy_dio_inspector: ^1.4.0
+  fancy_dio_inspector: ^1.4.1
 ```
 
 ## Initialization
