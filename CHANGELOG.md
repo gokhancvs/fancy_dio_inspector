@@ -1,3 +1,7 @@
+## 1.4.1
+
+- Fix Flutter Web's truncate issue. [#3](https://github.com/gokhancvs/fancy_dio_inspector/pull/3)
+
 ## 1.4.0
 
 - **NEW FEATURE:** Add `consoleOptions` parameter to `FancyDioInspectorOptions` in order to print requests, responses and errors to the console.
