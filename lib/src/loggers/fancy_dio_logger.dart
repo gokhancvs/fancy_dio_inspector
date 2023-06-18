@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:fancy_dio_inspector/src/models/models.dart';
 import 'package:fancy_dio_inspector/src/utils/enums/fancy_console_colors.dart';
 import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
+import 'package:flutter/foundation.dart';
 
 /// A fancy logger that logs network requests, responses and errors.
 class FancyDioLogger {
@@ -116,9 +117,17 @@ class FancyDioLogger {
 
     final data = model.toClipboardText();
 
-    developer.log(
-      '${ansiiColor.value}$data${resetAnsiColor.value}',
-      name: name,
-    );
+    /// [log] function inside `dart:developer` truncates the output for some
+    /// reason, so we use [debugPrint] instead as a workaround.
+    if (kIsWeb) {
+      debugPrint(
+        '${ansiiColor.value}$data'.replaceAll('\n', '\n${ansiiColor.value}'),
+      );
+    } else {
+      developer.log(
+        '${ansiiColor.value}$data${resetAnsiColor.value}',
+        name: name,
+      );
+    }
   }
 }
