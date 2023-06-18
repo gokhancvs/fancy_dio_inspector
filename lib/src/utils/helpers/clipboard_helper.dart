@@ -37,10 +37,10 @@ mixin ClipboardHelper {
     }
 
     buffer.writeln('${FancyStrings.headersTitle}:');
-    buffer.writeln(component.headers);
+    buffer.writeln(component.headers.trim());
     buffer.writeln();
 
-    buffer.writeln(component.time);
+    buffer.write(component.time);
 
     return buffer.toString();
   }

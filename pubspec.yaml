@@ -6,7 +6,7 @@ homepage: https://github.com/gokhancvs/fancy_dio_inspector
 repository: https://github.com/gokhancvs/fancy_dio_inspector
 issue_tracker: https://github.com/gokhancvs/fancy_dio_inspector/issues
 
-version: 1.4.0
+version: 1.4.1
 
 screenshots:
   - description: 'Fancy Dio Inspector'
