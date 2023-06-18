@@ -120,8 +120,10 @@ class FancyDioLogger {
     /// [log] function inside `dart:developer` truncates the output for some
     /// reason, so we use [debugPrint] instead as a workaround.
     if (kIsWeb) {
+      final color = ansiiColor.value;
+
       debugPrint(
-        '${ansiiColor.value}$data'.replaceAll('\n', '\n${ansiiColor.value}'),
+        '$color$data'.replaceAll('\n', '\n$color'),
       );
     } else {
       developer.log(
