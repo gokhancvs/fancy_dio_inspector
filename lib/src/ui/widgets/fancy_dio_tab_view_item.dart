@@ -1,16 +1,17 @@
-import 'package:fancy_dio_inspector/src/l10n/l10n.dart';
 import 'package:fancy_dio_inspector/src/models/models.dart';
 import 'package:fancy_dio_inspector/src/ui/widgets/widgets.dart';
 import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
 class FancyDioTabViewItem<T extends NetworkBaseModel> extends StatelessWidget {
-  final FancyDioInspectorTileOptions tileOptions;
   final T component;
+  final FancyDioInspectorTileOptions tileOptions;
+  final FancyDioInspectorL10nOptions l10nOptions;
 
   const FancyDioTabViewItem({
     required this.component,
     required this.tileOptions,
+    required this.l10nOptions,
     super.key,
   });
 
@@ -26,9 +27,10 @@ class FancyDioTabViewItem<T extends NetworkBaseModel> extends StatelessWidget {
             children: [
               Expanded(
                 child: FancyElevatedButton.cURL(
+                  text: l10nOptions.cURLText,
                   onPressed: () {
                     context
-                      ..showSnackBar(FancyStrings.cURLCopied)
+                      ..showSnackBar(l10nOptions.cURLCopiedText)
                       ..copyToClipboard(component.cURL);
                   },
                 ),
@@ -36,9 +38,10 @@ class FancyDioTabViewItem<T extends NetworkBaseModel> extends StatelessWidget {
               const FancyGap.medium(),
               Expanded(
                 child: FancyElevatedButton.copy(
+                  text: l10nOptions.copyText,
                   onPressed: () {
                     context
-                      ..showSnackBar(FancyStrings.copied)
+                      ..showSnackBar(l10nOptions.copiedText)
                       ..copyToClipboard(component.toClipboardText());
                   },
                 ),
@@ -48,22 +51,27 @@ class FancyDioTabViewItem<T extends NetworkBaseModel> extends StatelessWidget {
           const FancyGap.medium(),
         ],
         FancyDioTile(
-          title: '${FancyStrings.urlTitle} (${component.method})',
+          title: '${l10nOptions.urlTitleText} (${component.method})',
           description: component.url,
           options: tileOptions,
         ),
         if (component.method != 'GET') ...[
           const FancyGap.medium(),
           FancyDioTile(
-            title: FancyStrings.requestTitle,
+            title: l10nOptions.requestTitleText,
             description: component.requestBody,
             options: tileOptions,
           ),
         ],
-        FancyResponseNetworkTile(component: component, options: tileOptions),
+        FancyResponseNetworkTile(
+          component: component,
+          options: tileOptions,
+          responseTitleText: l10nOptions.responseTitleText,
+          errorTitleText: l10nOptions.errorTitleText,
+        ),
         const FancyGap.medium(),
         FancyDioTile(
-          title: FancyStrings.headersTitle,
+          title: l10nOptions.headersTitleText,
           description: component.headers,
           options: tileOptions,
         ),

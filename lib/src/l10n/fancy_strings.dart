@@ -19,7 +19,7 @@ mixin FancyStrings {
   static const String headersTitle = 'HEADERS';
   static const String cURL = 'cURL';
   static const String statusCodeTitle = 'STATUS CODE';
-  static const String networkTitle = 'Network Logs';
+  static const String appBarText = 'Network Logs';
 
   static const String search = 'Search';
   static const String copy = 'Copy';

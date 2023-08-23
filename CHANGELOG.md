@@ -1,3 +1,7 @@
+## 1.5.0
+
+- **NEW FEATURE:** Add `l10nOptions` parameter to `FancyDioInspectorView` in order to localize the inspector view.
+
 ## 1.4.1
 
 - Fix Flutter Web's truncate issue. [#3](https://github.com/gokhancvs/fancy_dio_inspector/pull/3)
