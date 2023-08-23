@@ -3,10 +3,12 @@ import 'package:fancy_dio_inspector/src/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class FancySearchField extends StatefulWidget {
+  final String hintText;
   final void Function(String newValue) onChanged;
 
   const FancySearchField({
     required this.onChanged,
+    this.hintText = FancyStrings.search,
     super.key,
   });
 
@@ -45,7 +47,7 @@ class _FancySearchFieldState extends State<FancySearchField> {
       decoration: InputDecoration(
         prefixIconColor: iconColor,
         suffixIconColor: iconColor,
-        hintText: FancyStrings.search,
+        hintText: widget.hintText,
         border: defaultBorder,
         enabledBorder: defaultBorder,
         focusedBorder: defaultBorder,

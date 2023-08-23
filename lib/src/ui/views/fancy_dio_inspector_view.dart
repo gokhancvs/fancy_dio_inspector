@@ -1,4 +1,3 @@
-import 'package:fancy_dio_inspector/src/l10n/l10n.dart';
 import 'package:fancy_dio_inspector/src/loggers/fancy_dio_logger.dart';
 import 'package:fancy_dio_inspector/src/models/models.dart';
 import 'package:fancy_dio_inspector/src/ui/widgets/widgets.dart';
@@ -11,6 +10,10 @@ class FancyDioInspectorView extends StatelessWidget {
   /// If this is `null`, the default options will be used.
   final FancyDioInspectorTileOptions tileOptions;
 
+  /// The options for the UI localization.
+  /// If any of the value is `null`, the default value will be used.
+  final FancyDioInspectorL10nOptions l10nOptions;
+
   /// [leading] is used to place a widget before the title.
   final Widget? leading;
 
@@ -19,6 +22,7 @@ class FancyDioInspectorView extends StatelessWidget {
 
   const FancyDioInspectorView({
     this.tileOptions = const FancyDioInspectorTileOptions(),
+    this.l10nOptions = const FancyDioInspectorL10nOptions(),
     this.leading,
     this.actions,
     super.key,
@@ -33,24 +37,36 @@ class FancyDioInspectorView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      const Tab(
-        text: FancyStrings.requests,
-        icon: Icon(Icons.network_check),
+      Tab(
+        text: l10nOptions.requestsText,
+        icon: const Icon(Icons.network_check),
       ),
-      const Tab(
-        text: FancyStrings.responses,
-        icon: Icon(Icons.list),
+      Tab(
+        text: l10nOptions.responsesText,
+        icon: const Icon(Icons.list),
       ),
-      const Tab(
-        text: FancyStrings.errors,
-        icon: Icon(Icons.error),
+      Tab(
+        text: l10nOptions.errorsText,
+        icon: const Icon(Icons.error),
       ),
     ];
 
     final tabBarViews = [
-      FancyDioTabView(components: _requests, tileOptions: tileOptions),
-      FancyDioTabView(components: _responses, tileOptions: tileOptions),
-      FancyDioTabView(components: _errors, tileOptions: tileOptions),
+      FancyDioTabView(
+        components: _requests,
+        l10nOptions: l10nOptions,
+        tileOptions: tileOptions,
+      ),
+      FancyDioTabView(
+        components: _responses,
+        l10nOptions: l10nOptions,
+        tileOptions: tileOptions,
+      ),
+      FancyDioTabView(
+        components: _errors,
+        l10nOptions: l10nOptions,
+        tileOptions: tileOptions,
+      ),
     ];
 
     return DefaultTabController(
@@ -60,7 +76,7 @@ class FancyDioInspectorView extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: const Text(FancyStrings.networkTitle),
+            title: Text(l10nOptions.appBarText),
             bottom: TabBar(tabs: tabs),
             leading: leading,
             actions: actions,

@@ -45,20 +45,22 @@ class FancyElevatedButton extends StatelessWidget {
   }
 
   factory FancyElevatedButton.copy({
+    String text = FancyStrings.copy,
     void Function()? onPressed,
   }) {
     return FancyElevatedButton(
-      text: FancyStrings.copy,
+      text: text,
       onPressed: onPressed,
       prefix: const Icon(Icons.copy),
     );
   }
 
   factory FancyElevatedButton.cURL({
+    String text = FancyStrings.cURL,
     void Function()? onPressed,
   }) {
     return FancyElevatedButton(
-      text: FancyStrings.cURL,
+      text: text,
       onPressed: onPressed,
       prefix: const Icon(Icons.copy),
     );

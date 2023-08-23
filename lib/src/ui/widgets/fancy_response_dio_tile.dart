@@ -1,4 +1,3 @@
-import 'package:fancy_dio_inspector/src/l10n/l10n.dart';
 import 'package:fancy_dio_inspector/src/models/models.dart';
 import 'package:fancy_dio_inspector/src/ui/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +6,14 @@ class FancyResponseNetworkTile<T extends NetworkBaseModel>
     extends StatelessWidget {
   final T component;
   final FancyDioInspectorTileOptions options;
+  final String responseTitleText;
+  final String errorTitleText;
 
   const FancyResponseNetworkTile({
     required this.component,
     required this.options,
+    required this.responseTitleText,
+    required this.errorTitleText,
     super.key,
   });
 
@@ -22,7 +25,7 @@ class FancyResponseNetworkTile<T extends NetworkBaseModel>
       case NetworkResponseModel:
         final innerComponent = component as NetworkResponseModel;
         widget = FancyDioTile(
-          title: '${FancyStrings.responseTitle} (${innerComponent.statusCode})',
+          title: '$responseTitleText (${innerComponent.statusCode})',
           description: innerComponent.responseBody,
           options: options,
         );
@@ -30,7 +33,7 @@ class FancyResponseNetworkTile<T extends NetworkBaseModel>
       case NetworkErrorModel:
         final innerComponent = component as NetworkErrorModel;
         widget = FancyDioTile(
-          title: '${FancyStrings.errorTitle} (${innerComponent.statusCode})',
+          title: '$errorTitleText (${innerComponent.statusCode})',
           description: innerComponent.errorBody,
           options: options,
         );

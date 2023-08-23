@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 
 class FancyDioTabView<T extends NetworkBaseModel> extends StatefulWidget {
   final FancyDioInspectorTileOptions tileOptions;
+  final FancyDioInspectorL10nOptions l10nOptions;
   final List<T> components;
 
   const FancyDioTabView({
     required this.tileOptions,
+    required this.l10nOptions,
     required this.components,
     super.key,
   });
@@ -42,7 +44,10 @@ class _FancyDioTabViewState<T extends NetworkBaseModel>
       children: [
         Padding(
           padding: const EdgeInsets.all(16),
-          child: FancySearchField(onChanged: _onSearchChanged),
+          child: FancySearchField(
+            hintText: widget.l10nOptions.searchHintText,
+            onChanged: _onSearchChanged,
+          ),
         ),
         const Divider(height: 1),
         Expanded(
@@ -56,6 +61,7 @@ class _FancyDioTabViewState<T extends NetworkBaseModel>
                 padding: const EdgeInsets.all(16),
                 child: FancyDioTabViewItem(
                   component: filteredComponent,
+                  l10nOptions: widget.l10nOptions,
                   tileOptions: widget.tileOptions,
                 ),
               );
