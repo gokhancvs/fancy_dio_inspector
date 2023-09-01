@@ -41,13 +41,9 @@ mixin ClipboardHelper {
     buffer.writeln();
 
     if (component is NetworkResponseModel) {
-      buffer.write(
-        '${component.time} (${component.elapsedDuration.inMilliseconds} ms)',
-      );
+      buffer.write(component.getFormattedTime());
     } else if (component is NetworkErrorModel) {
-      buffer.write(
-        '${component.time} (${component.elapsedDuration.inMilliseconds} ms)',
-      );
+      buffer.write(component.getFormattedTime());
     } else {
       buffer.write(component.time);
     }

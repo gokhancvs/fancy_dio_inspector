@@ -21,11 +21,11 @@ class FancyDioTabViewItem<T extends NetworkBaseModel> extends StatelessWidget {
     if (component is NetworkResponseModel) {
       final model = component as NetworkResponseModel;
 
-      return '$innerTime (${model.elapsedDuration.inMilliseconds} ms)';
+      return model.getFormattedTime();
     } else if (component is NetworkErrorModel) {
       final model = component as NetworkErrorModel;
 
-      return '$innerTime (${model.elapsedDuration.inMilliseconds} ms)';
+      return model.getFormattedTime();
     } else {
       return innerTime;
     }

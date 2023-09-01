@@ -1,4 +1,5 @@
 import 'package:fancy_dio_inspector/src/models/network/network_base_model.dart';
+import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
 
 class NetworkResponseModel extends NetworkBaseModel {
   final String statusCode;
@@ -51,5 +52,9 @@ class NetworkResponseModel extends NetworkBaseModel {
         searchPattern.hasMatch(headers) ||
         searchPattern.hasMatch(statusCode) ||
         searchPattern.hasMatch(responseBody);
+  }
+
+  String getFormattedTime() {
+    return '${time.toFormattedString()} (${elapsedDuration.inMilliseconds} ms)';
   }
 }
