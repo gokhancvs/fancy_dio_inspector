@@ -40,7 +40,13 @@ mixin ClipboardHelper {
     buffer.writeln(component.headers.trim());
     buffer.writeln();
 
-    buffer.write(component.time);
+    if (component is NetworkResponseModel) {
+      buffer.write(component.getFormattedTime());
+    } else if (component is NetworkErrorModel) {
+      buffer.write(component.getFormattedTime());
+    } else {
+      buffer.write(component.time);
+    }
 
     return buffer.toString();
   }

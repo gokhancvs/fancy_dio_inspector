@@ -1,12 +1,15 @@
 import 'package:fancy_dio_inspector/src/models/network/network_base_model.dart';
+import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
 
 class NetworkErrorModel extends NetworkBaseModel {
   final String statusCode;
   final String errorBody;
+  final Duration elapsedDuration;
 
   const NetworkErrorModel({
     required this.statusCode,
     required this.errorBody,
+    required this.elapsedDuration,
     required super.url,
     required super.method,
     required super.requestBody,
@@ -18,6 +21,7 @@ class NetworkErrorModel extends NetworkBaseModel {
   NetworkErrorModel copyWith({
     String? statusCode,
     String? errorBody,
+    Duration? elapsedDuration,
     String? url,
     String? method,
     String? requestBody,
@@ -28,6 +32,7 @@ class NetworkErrorModel extends NetworkBaseModel {
     return NetworkErrorModel(
       statusCode: statusCode ?? this.statusCode,
       errorBody: errorBody ?? this.errorBody,
+      elapsedDuration: elapsedDuration ?? this.elapsedDuration,
       url: url ?? this.url,
       method: method ?? this.method,
       requestBody: requestBody ?? this.requestBody,
@@ -47,5 +52,9 @@ class NetworkErrorModel extends NetworkBaseModel {
         searchPattern.hasMatch(headers) ||
         searchPattern.hasMatch(statusCode) ||
         searchPattern.hasMatch(errorBody);
+  }
+
+  String getFormattedTime() {
+    return '${time.toFormattedString()} (${elapsedDuration.inMilliseconds} ms)';
   }
 }

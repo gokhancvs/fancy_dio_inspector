@@ -2,7 +2,7 @@ import 'dart:developer' as developer;
 
 import 'package:dio/dio.dart';
 import 'package:fancy_dio_inspector/src/models/models.dart';
-import 'package:fancy_dio_inspector/src/utils/enums/fancy_console_colors.dart';
+import 'package:fancy_dio_inspector/src/utils/enums/enums.dart';
 import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
 import 'package:flutter/foundation.dart';
 
@@ -27,6 +27,8 @@ class FancyDioLogger {
     final now = DateTime.now();
 
     if (data is RequestOptions) {
+      data.extra[FancyDioKey.requestTime.key] = now;
+
       final requestModel = NetworkRequestModel(
         url: data.createUrlComponent(),
         method: data.createMethodComponent(),
@@ -53,6 +55,7 @@ class FancyDioLogger {
         statusCode: data.createStatusCodeComponent(),
         responseBody: data.createResponseComponent(),
         time: now,
+        elapsedDuration: data.calculateElapsedDuration(),
       );
 
       _apiResponses.insert(0, responseModel);
@@ -72,6 +75,7 @@ class FancyDioLogger {
         statusCode: data.createStatusCodeComponent(),
         errorBody: data.createErrorComponent(),
         time: now,
+        elapsedDuration: data.calculateElapsedDuration(),
       );
 
       _apiErrors.insert(0, errorModel);

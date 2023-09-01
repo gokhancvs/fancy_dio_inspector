@@ -15,6 +15,22 @@ class FancyDioTabViewItem<T extends NetworkBaseModel> extends StatelessWidget {
     super.key,
   });
 
+  String get time {
+    final innerTime = component.time.toFormattedString();
+
+    if (component is NetworkResponseModel) {
+      final model = component as NetworkResponseModel;
+
+      return model.getFormattedTime();
+    } else if (component is NetworkErrorModel) {
+      final model = component as NetworkErrorModel;
+
+      return model.getFormattedTime();
+    } else {
+      return innerTime;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -77,7 +93,7 @@ class FancyDioTabViewItem<T extends NetworkBaseModel> extends StatelessWidget {
         ),
         const FancyGap.medium(),
         FancyDioTile(
-          description: component.time.toString(),
+          description: time,
           options: tileOptions,
         ),
       ],

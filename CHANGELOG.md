@@ -1,3 +1,7 @@
+## 1.5.1
+
+- **NEW FEATURE:** Show elapsed duration to the response and error models.
+
 ## 1.5.0
 
 - **NEW FEATURE:** Add `l10nOptions` parameter to `FancyDioInspectorView` in order to localize the inspector view.
