@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:fancy_dio_inspector/src/utils/enums/enums.dart';
 import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
 
 extension ResponseExtensions on Response<dynamic> {
@@ -35,4 +36,12 @@ extension ResponseExtensions on Response<dynamic> {
   }
 
   String get cURL => requestOptions.cURL;
+
+  Duration calculateElapsedDuration() {
+    final requestTime =
+        requestOptions.extra[FancyDioKey.requestTime.key] as DateTime;
+    final now = DateTime.now();
+
+    return now.difference(requestTime);
+  }
 }

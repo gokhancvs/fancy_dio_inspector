@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:fancy_dio_inspector/src/utils/enums/enums.dart';
 import 'package:fancy_dio_inspector/src/utils/extensions/request_extensions.dart';
 import 'package:fancy_dio_inspector/src/utils/extensions/response_extensions.dart';
 
@@ -28,4 +29,12 @@ extension DioErrorExtensions on DioException {
   }
 
   String get cURL => requestOptions.cURL;
+
+  Duration calculateElapsedDuration() {
+    final requestTime =
+        requestOptions.extra[FancyDioKey.requestTime.key] as DateTime;
+    final now = DateTime.now();
+
+    return now.difference(requestTime);
+  }
 }
