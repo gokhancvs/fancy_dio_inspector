@@ -1,3 +1,7 @@
+## 1.6.0
+
+- **NEW FEATURE:** Add `themeData` parameter to `FancyDioInspectorView` in order to override the default theme.
+
 ## 1.5.2
 
 - Upgrade [Dio](https://pub.dev/packages/dio) from `5.2.0` to `5.3.3`.
