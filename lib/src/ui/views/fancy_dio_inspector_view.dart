@@ -20,11 +20,16 @@ class FancyDioInspectorView extends StatelessWidget {
   /// [actions] are used to place widgets after the title.
   final List<Widget>? actions;
 
+  /// The theme data for the view. If this is `null`, `FancyThemeData` will be
+  /// used.
+  final ThemeData? themeData;
+
   const FancyDioInspectorView({
     this.tileOptions = const FancyDioInspectorTileOptions(),
     this.l10nOptions = const FancyDioInspectorL10nOptions(),
     this.leading,
     this.actions,
+    this.themeData,
     super.key,
   });
 
@@ -72,7 +77,7 @@ class FancyDioInspectorView extends StatelessWidget {
     return DefaultTabController(
       length: tabs.length,
       child: Theme(
-        data: context.currentTheme,
+        data: themeData ?? context.currentTheme,
         child: Scaffold(
           appBar: AppBar(
             centerTitle: true,
