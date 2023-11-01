@@ -1,3 +1,7 @@
+## 1.5.2
+
+- Upgrade [Dio](https://pub.dev/packages/dio) from `5.2.0` to `5.3.3`.
+
 ## 1.5.1
 
 - **NEW FEATURE:** Show elapsed duration to the response and error models.
