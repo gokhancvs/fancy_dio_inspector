@@ -1,5 +1,4 @@
 import 'package:fancy_dio_inspector/src/l10n/l10n.dart';
-import 'package:fancy_dio_inspector/src/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class FancySearchField extends StatefulWidget {
@@ -32,30 +31,16 @@ class _FancySearchFieldState extends State<FancySearchField> {
 
   @override
   Widget build(BuildContext context) {
-    const defaultBorderSide = BorderSide(color: FancyColors.grey);
-
-    const iconColor = FancyColors.grey;
-
-    final defaultBorder = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(16),
-      borderSide: defaultBorderSide,
-    );
-
     return TextField(
       controller: _controller,
       onChanged: widget.onChanged,
       decoration: InputDecoration(
-        prefixIconColor: iconColor,
-        suffixIconColor: iconColor,
         hintText: widget.hintText,
-        border: defaultBorder,
-        enabledBorder: defaultBorder,
-        focusedBorder: defaultBorder,
-        prefixIcon: const Icon(Icons.search, color: iconColor),
+        prefixIcon: const Icon(Icons.search),
         suffixIcon: GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: _onClearPressed,
-          child: const Icon(Icons.close, color: iconColor),
+          child: const Icon(Icons.close),
         ),
       ),
     );

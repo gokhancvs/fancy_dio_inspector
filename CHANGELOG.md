@@ -1,3 +1,7 @@
+## 1.6.1
+
+- Improve theme support.
+
 ## 1.6.0
 
 - **NEW FEATURE:** Add `themeData` parameter to `FancyDioInspectorView` in order to override the default theme.
