@@ -29,7 +29,7 @@ mixin FancyThemeData {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: FancyColors.darkCyan,
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(16),
         shape: const StadiumBorder(),
         elevation: 0,
       ),
