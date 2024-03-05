@@ -13,8 +13,14 @@ class FancyDioInspectorTileOptions {
   /// then the string will be truncated and `...` will be appended at the end.
   final int? maxLines;
 
+  /// It controls whether to show the search field to filter elements or not.
+  /// If `true`, then the search field will be shown.
+  /// If `false`, then the search field will be hidden.
+  final bool showSearch;
+
   const FancyDioInspectorTileOptions({
-    this.showButtons = true,
+    this.showButtons = false,
+    this.showSearch = true,
     this.maxCharacters,
     this.maxLines,
   });

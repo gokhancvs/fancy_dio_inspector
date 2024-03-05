@@ -1,3 +1,6 @@
+## NEXT
+- Adds new optional parameter in `FancyDioInspectorTileOptions` to be able to toggle the search field.
+
 ## 1.6.1
 
 - Improve theme support.
