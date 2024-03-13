@@ -17,7 +17,7 @@ class FancyDioInspectorTileOptions {
   final bool showSearch;
 
   const FancyDioInspectorTileOptions({
-    this.showButtons = false,
+    this.showButtons = true,
     this.showSearch = true,
     this.maxCharacters,
     this.maxLines,
