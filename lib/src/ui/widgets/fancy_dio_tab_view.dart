@@ -42,14 +42,16 @@ class _FancyDioTabViewState<T extends NetworkBaseModel>
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: FancySearchField(
-            hintText: widget.l10nOptions.searchHintText,
-            onChanged: _onSearchChanged,
+        if (widget.tileOptions.showSearch) ...[
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: FancySearchField(
+              hintText: widget.l10nOptions.searchHintText,
+              onChanged: _onSearchChanged,
+            ),
           ),
-        ),
-        const Divider(height: 1),
+          const Divider(height: 1),
+        ],
         Expanded(
           child: ListView.separated(
             itemCount: filteredComponents.length,
