@@ -1,5 +1,7 @@
-## NEXT
-- Adds `showSearch` to `FancyDioInspectorTileOptions` in order to be able to toggle the search field.
+## 1.7.0
+
+- Add `showSearch` to `FancyDioInspectorTileOptions` in order to be able to toggle the search field. [#9](https://github.com/gokhancvs/fancy_dio_inspector/pull/9)
+- Upgrade [Dio](https://pub.dev/packages/dio) from `5.3.3` to `5.4.1`.
 
 ## 1.6.1
 
