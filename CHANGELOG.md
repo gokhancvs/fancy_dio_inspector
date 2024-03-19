@@ -1,6 +1,7 @@
 ## NEXT
 - Adds info text to indicate when no requests were (yet) recorded.
 - Adds info text to indicate that the search did not return any results.
+- Fixed typo in documentation.
 
 ## 1.7.0
 

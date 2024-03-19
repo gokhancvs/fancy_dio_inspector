@@ -33,7 +33,7 @@ class FancyDioInspectorL10nOptions {
   final String copiedText;
 
   /// [cURLCopiedText] is used when the cURL button is pressed. Defaults to
-  /// Defaults to `cURL Copied`.
+  /// `cURL Copied`.
   final String cURLCopiedText;
 
   /// [urlTitleText] is used where the url is displayed. Defaults to `URL`.
@@ -56,10 +56,10 @@ class FancyDioInspectorL10nOptions {
   final String errorTitleText;
 
   /// [noDataYetText] is used when there is no data yet. Defaults to
-  ///  `No data yet`.
+  ///  `No data (yet)`.
   final String noDataYetText;
 
-  /// [noSearchResultsText] is used when there are no search results. Defaults 
+  /// [noSearchResultsText] is used when there are no search results. Defaults
   /// to `No search results`.
   final String noSearchResultsText;
 
