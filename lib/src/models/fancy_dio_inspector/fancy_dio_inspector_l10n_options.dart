@@ -55,6 +55,14 @@ class FancyDioInspectorL10nOptions {
   /// `ERROR BODY`.
   final String errorTitleText;
 
+  /// [noDataYetText] is used when there is no data yet. Defaults to
+  ///  `No data yet`.
+  final String noDataYetText;
+
+  /// [noSearchResultsText] is used when there are no search results. Defaults 
+  /// to `No search results`.
+  final String noSearchResultsText;
+
   const FancyDioInspectorL10nOptions({
     this.appBarText = FancyStrings.appBarText,
     this.requestsText = FancyStrings.requests,
@@ -70,5 +78,7 @@ class FancyDioInspectorL10nOptions {
     this.headersTitleText = FancyStrings.headersTitle,
     this.responseTitleText = FancyStrings.responseTitle,
     this.errorTitleText = FancyStrings.errorTitle,
+    this.noDataYetText = FancyStrings.noDataYet,
+    this.noSearchResultsText = FancyStrings.noSearchResults,
   });
 }

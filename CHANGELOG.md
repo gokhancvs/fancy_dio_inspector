@@ -1,3 +1,7 @@
+## NEXT
+- Adds info text to indicate when no requests were (yet) recorded.
+- Adds info text to indicate that the search did not return any results.
+
 ## 1.7.0
 
 - Add `showSearch` to `FancyDioInspectorTileOptions` in order to be able to toggle the search field. [#9](https://github.com/gokhancvs/fancy_dio_inspector/pull/9)
