@@ -1,6 +1,6 @@
 ## NEXT
 
-- Lose focus on the search field if tapped outside of it.
+- Unfocus search field when tapped outside of it.
 
 ## 1.7.0
 
