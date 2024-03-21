@@ -37,11 +37,11 @@ class _FancySearchFieldState extends State<FancySearchField> {
       decoration: InputDecoration(
         hintText: widget.hintText,
         prefixIcon: const Icon(Icons.search),
-        suffixIcon: GestureDetector(
+        suffixIcon: _controller.text.isNotEmpty ? GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: _onClearPressed,
           child: const Icon(Icons.close),
-        ),
+        ) : null,
       ),
     );
   }
