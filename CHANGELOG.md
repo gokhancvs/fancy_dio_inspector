@@ -2,6 +2,7 @@
 - Adds info text to indicate when no requests were (yet) recorded.
 - Adds info text to indicate that the search did not return any results.
 - Fixed typo in documentation.
+- Unfocus search field when tapped outside of it.
 
 ## 1.7.0
 
