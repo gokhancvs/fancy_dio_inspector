@@ -25,4 +25,7 @@ mixin FancyStrings {
   static const String copy = 'Copy';
   static const String copied = 'Copied';
   static const String cURLCopied = 'cURL Copied';
+
+  static const String noDataYet = 'No data (yet)';
+  static const String noSearchResults = 'No search results';
 }
