@@ -53,39 +53,44 @@ class _FancyDioTabViewState<T extends NetworkBaseModel>
           const Divider(height: 1),
         ],
         Expanded(
-          child: widget.components.isEmpty
-              ? Center(
-                  child: Text(
-                    widget.l10nOptions.noDataYetText,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                )
-              : filteredComponents.isEmpty
-                  ? Center(
-                      child: Text(
-                        widget.l10nOptions.noSearchResultsText,
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                    )
-                  : ListView.separated(
-                      itemCount: filteredComponents.length,
-                      separatorBuilder: (context, index) =>
-                          const Divider(height: 8),
-                      itemBuilder: (context, index) {
-                        final filteredComponent = filteredComponents[index];
-
-                        return Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: FancyDioTabViewItem(
-                            component: filteredComponent,
-                            l10nOptions: widget.l10nOptions,
-                            tileOptions: widget.tileOptions,
-                          ),
-                        );
-                      },
-                    ),
+          child: buildComponentView(),
         ),
       ],
+    );
+  }
+
+  Widget buildComponentView() {
+    if (widget.components.isEmpty) {
+      return FancyNoDataPlaceholder(
+        l10nOptions: widget.l10nOptions,
+      );
+    }
+
+    if (filteredComponents.isEmpty) {
+      return FancyNoSearchResultsPlaceholder(
+        l10nOptions: widget.l10nOptions,
+      );
+    }
+
+    return buildListView();
+  }
+
+  Widget buildListView() {
+    return ListView.separated(
+      itemCount: filteredComponents.length,
+      separatorBuilder: (context, index) => const Divider(height: 8),
+      itemBuilder: (context, index) {
+        final filteredComponent = filteredComponents[index];
+
+        return Padding(
+          padding: const EdgeInsets.all(16),
+          child: FancyDioTabViewItem(
+            component: filteredComponent,
+            l10nOptions: widget.l10nOptions,
+            tileOptions: widget.tileOptions,
+          ),
+        );
+      },
     );
   }
 }
