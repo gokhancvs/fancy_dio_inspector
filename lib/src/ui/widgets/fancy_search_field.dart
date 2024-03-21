@@ -32,6 +32,7 @@ class _FancySearchFieldState extends State<FancySearchField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onTapOutside: (_) => FocusScope.of(context).unfocus(),
       controller: _controller,
       onChanged: widget.onChanged,
       decoration: InputDecoration(

@@ -1,3 +1,7 @@
+## NEXT
+
+- Unfocus search field when tapped outside of it.
+
 ## 1.7.0
 
 - Add `showSearch` to `FancyDioInspectorTileOptions` in order to be able to toggle the search field. [#9](https://github.com/gokhancvs/fancy_dio_inspector/pull/9)
