@@ -13,8 +13,7 @@ screenshots:
     path: assets/screenshots/screenshot_1.png
 
 environment:
-  sdk: '>=2.17.6 <4.0.0'
-  flutter: '>=3.0.5'
+  sdk: ^3.0.0
 
 dependencies:
   dio: ^5.5.0+1
