@@ -7,7 +7,7 @@ import 'package:fancy_dio_inspector/src/utils/extensions/extensions.dart';
 import 'package:flutter/foundation.dart';
 
 /// A fancy logger that logs network requests, responses and errors.
-class FancyDioLogger {
+final class FancyDioLogger {
   FancyDioLogger._();
   static final FancyDioLogger instance = FancyDioLogger._();
 
@@ -75,7 +75,6 @@ class FancyDioLogger {
         statusCode: data.createStatusCodeComponent(),
         errorBody: data.createErrorComponent(),
         time: now,
-        elapsedDuration: data.calculateElapsedDuration(),
       );
 
       _apiErrors.insert(0, errorModel);
