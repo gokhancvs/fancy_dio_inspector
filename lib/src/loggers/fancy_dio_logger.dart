@@ -100,15 +100,12 @@ final class FancyDioLogger {
       case NetworkRequestModel:
         name = consoleOptions.requestName;
         ansiiColor = consoleOptions.requestColor;
-        break;
       case NetworkResponseModel:
         name = consoleOptions.responseName;
         ansiiColor = consoleOptions.responseColor;
-        break;
       case NetworkErrorModel:
         name = consoleOptions.errorName;
         ansiiColor = consoleOptions.errorColor;
-        break;
       default:
         throw Exception('Invalid type! ${model.runtimeType}}');
     }
