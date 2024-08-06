@@ -40,7 +40,7 @@ sealed class NetworkBaseModel {
   });
 
   RegExp getSearchPattern(String query) {
-    return RegExp(query, caseSensitive: false);
+    return RegExp(RegExp.escape(query), caseSensitive: false);
   }
 
   /// This is needed in order to find the a specific network request, response
