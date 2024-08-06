@@ -15,20 +15,12 @@ class FancyDioTabViewItem<T extends NetworkBaseModel> extends StatelessWidget {
     super.key,
   });
 
-  String get time {
-    final innerTime = component.time.toFormattedString();
-
-    if (component is NetworkResponseModel) {
-      final model = component as NetworkResponseModel;
-
-      return model.getFormattedTime();
-    } else if (component is NetworkErrorModel) {
-      final model = component as NetworkErrorModel;
-
-      return model.getFormattedTime();
-    } else {
-      return innerTime;
-    }
+  String getTime(T component) {
+    return switch (component) {
+      NetworkRequestModel() => component.time.toFormattedString(),
+      NetworkResponseModel() => component.getFormattedTime(),
+      NetworkErrorModel() => component.getFormattedTime(),
+    };
   }
 
   @override
@@ -85,15 +77,17 @@ class FancyDioTabViewItem<T extends NetworkBaseModel> extends StatelessWidget {
           responseTitleText: l10nOptions.responseTitleText,
           errorTitleText: l10nOptions.errorTitleText,
         ),
+        if (tileOptions.showHeaders) ...[
+          const FancyGap.medium(),
+          FancyDioTile(
+            title: l10nOptions.headersTitleText,
+            description: component.headers,
+            options: tileOptions,
+          ),
+        ],
         const FancyGap.medium(),
         FancyDioTile(
-          title: l10nOptions.headersTitleText,
-          description: component.headers,
-          options: tileOptions,
-        ),
-        const FancyGap.medium(),
-        FancyDioTile(
-          description: time,
+          description: getTime(component),
           options: tileOptions,
         ),
       ],
