@@ -7,6 +7,7 @@ mixin FancyThemeData {
     primaryColor: FancyColors.turquoise,
     indicatorColor: FancyColors.darkCyan,
     appBarTheme: const AppBarTheme(
+      foregroundColor: FancyColors.white,
       backgroundColor: FancyColors.turquoise,
       elevation: 0,
     ),
@@ -28,8 +29,9 @@ mixin FancyThemeData {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        foregroundColor: FancyColors.white,
         backgroundColor: FancyColors.darkCyan,
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(8),
         shape: const StadiumBorder(),
         elevation: 0,
       ),
