@@ -29,6 +29,7 @@ class FancyResponseNetworkTile<T extends NetworkBaseModel>
           description: innerComponent.responseBody,
           options: options,
         );
+
       case NetworkErrorModel:
         final innerComponent = component as NetworkErrorModel;
         widget = FancyDioTile(

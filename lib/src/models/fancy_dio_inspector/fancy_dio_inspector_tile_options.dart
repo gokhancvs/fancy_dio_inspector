@@ -16,10 +16,14 @@ class FancyDioInspectorTileOptions {
   /// It controls whether to show the search field to filter elements or not.
   final bool showSearch;
 
+  /// It controls whether to show the headers in the tile or not.
+  final bool showHeaders;
+
   const FancyDioInspectorTileOptions({
     this.showButtons = true,
     this.showSearch = true,
     this.maxCharacters,
     this.maxLines,
+    this.showHeaders = true,
   });
 }
