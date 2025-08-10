@@ -14,7 +14,7 @@ mixin FancyThemeData {
       backgroundColor: FancyColors.turquoise,
       elevation: 0,
     ),
-    tabBarTheme: const TabBarTheme(
+    tabBarTheme: const TabBarThemeData(
       labelColor: FancyColors.white,
       unselectedLabelColor: FancyColors.white,
     ),
