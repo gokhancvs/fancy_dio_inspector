@@ -40,9 +40,11 @@ class _FancyDioTabViewState<T extends NetworkBaseModel>
 
   @override
   Widget build(BuildContext context) {
+    final showSearch = widget.tileOptions.showSearch;
+
     return Column(
       children: [
-        if (widget.tileOptions.showSearch) ...[
+        if (showSearch) ...[
           Padding(
             padding: const EdgeInsets.all(16),
             child: FancySearchField(
@@ -53,19 +55,41 @@ class _FancyDioTabViewState<T extends NetworkBaseModel>
           const Divider(height: 1),
         ],
         Expanded(
-          child: ListView.separated(
-            itemCount: filteredComponents.length,
-            separatorBuilder: (context, index) => const Divider(height: 8),
-            itemBuilder: (context, index) {
-              final filteredComponent = filteredComponents[index];
+          child: Builder(
+            builder: (context) {
+              if (widget.components.isEmpty) {
+                return Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(widget.l10nOptions.noDataYetText),
+                  ),
+                );
+              }
 
-              return Padding(
-                padding: const EdgeInsets.all(16),
-                child: FancyDioTabViewItem(
-                  component: filteredComponent,
-                  l10nOptions: widget.l10nOptions,
-                  tileOptions: widget.tileOptions,
-                ),
+              if (filteredComponents.isEmpty) {
+                return Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(widget.l10nOptions.noSearchResultsText),
+                  ),
+                );
+              }
+
+              return ListView.separated(
+                itemCount: filteredComponents.length,
+                separatorBuilder: (context, index) => const Divider(height: 8),
+                itemBuilder: (context, index) {
+                  final filteredComponent = filteredComponents[index];
+
+                  return Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: FancyDioTabViewItem(
+                      component: filteredComponent,
+                      l10nOptions: widget.l10nOptions,
+                      tileOptions: widget.tileOptions,
+                    ),
+                  );
+                },
               );
             },
           ),
