@@ -22,7 +22,7 @@ class FancyResponseNetworkTile<T extends NetworkBaseModel>
     final Widget widget;
 
     switch (T) {
-      case NetworkResponseModel:
+      case NetworkResponseModel():
         final innerComponent = component as NetworkResponseModel;
         widget = FancyDioTile(
           title: '$responseTitleText (${innerComponent.statusCode})',
@@ -30,7 +30,7 @@ class FancyResponseNetworkTile<T extends NetworkBaseModel>
           options: options,
         );
 
-      case NetworkErrorModel:
+      case NetworkErrorModel():
         final innerComponent = component as NetworkErrorModel;
         widget = FancyDioTile(
           title: '$errorTitleText (${innerComponent.statusCode})',

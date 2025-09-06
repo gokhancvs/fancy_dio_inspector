@@ -97,13 +97,13 @@ final class FancyDioLogger {
     const resetAnsiColor = FancyConsoleTextColors.reset;
 
     switch (model.runtimeType) {
-      case NetworkRequestModel:
+      case NetworkRequestModel():
         name = consoleOptions.requestName;
         ansiiColor = consoleOptions.requestColor;
-      case NetworkResponseModel:
+      case NetworkResponseModel():
         name = consoleOptions.responseName;
         ansiiColor = consoleOptions.responseColor;
-      case NetworkErrorModel:
+      case NetworkErrorModel():
         name = consoleOptions.errorName;
         ansiiColor = consoleOptions.errorColor;
       default:
