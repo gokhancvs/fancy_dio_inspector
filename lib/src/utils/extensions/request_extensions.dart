@@ -79,7 +79,18 @@ extension CurlExtension on RequestOptions {
           files.addAll(data as Map<String, dynamic>);
 
           if (files.isNotEmpty) {
-            postData = "-d '${json.encode(files)}'";
+            if (headers.containsValue(Headers.formUrlEncodedContentType)) {
+              final encodeData = files.entries.map((entry) {
+                final key = Uri.encodeQueryComponent(entry.key);
+                final value = Uri.encodeQueryComponent(entry.value.toString());
+
+                return '$key=$value';
+              }).join('&');
+
+              postData = "-d '$encodeData'";
+            } else {
+              postData = "-d '${json.encode(files)}'";
+            }
           }
         }
       }
