@@ -5,7 +5,7 @@
 - **NEW FEATURE:** Unfocus search field when tapped outside of it. (Thanks to [Patrick Chrestin](https://github.com/PatrickChrestin))
 - **FIX:** cURL generate for `contentType` of `Headers.formUrlEncodedContentType`. (Thanks to [zhouyuzhouyu](https://github.com/zhouyuzhouyu))
 - **FIX:** Update `TabBarTheme` to `TabBarThemeData`.
-- Upgrade [very_good_analysis] from `^5.1.0` to `10.0.0`.
+- Upgrade [very_good_analysis](https://pub.dev/packages/very_good_analysis) from `^5.1.0` to `10.0.0`.
 - Upgrade [Dio](https://pub.dev/packages/dio) from `^5.5.0+1` to `5.9.0`.
 
 ## 1.7.0
