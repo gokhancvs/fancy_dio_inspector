@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FancyGap extends StatelessWidget {
+final class FancyGap extends StatelessWidget {
   final double size;
 
   const FancyGap(this.size, {super.key});
@@ -17,14 +17,14 @@ class FancyGap extends StatelessWidget {
   const factory FancyGap.verySmall() = _FancyVerySmallGap;
 }
 
-class _FancyMediumGap extends FancyGap {
+final class _FancyMediumGap extends FancyGap {
   const _FancyMediumGap() : super(16);
 }
 
-class _FancySmallGap extends FancyGap {
+final class _FancySmallGap extends FancyGap {
   const _FancySmallGap() : super(8);
 }
 
-class _FancyVerySmallGap extends FancyGap {
+final class _FancyVerySmallGap extends FancyGap {
   const _FancyVerySmallGap() : super(4);
 }

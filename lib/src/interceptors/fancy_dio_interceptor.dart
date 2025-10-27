@@ -3,7 +3,7 @@ import 'package:fancy_dio_inspector/src/loggers/fancy_dio_logger.dart';
 import 'package:fancy_dio_inspector/src/models/models.dart';
 import 'package:fancy_dio_inspector/src/typedefs/typedefs.dart';
 
-class FancyDioInterceptor extends Interceptor {
+base class FancyDioInterceptor extends Interceptor {
   FancyDioLogger get logger => FancyDioLogger.instance;
 
   final FancyDioInspectorOptions options;

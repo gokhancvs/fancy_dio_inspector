@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fancy_dio_inspector/src/theme/theme.dart';
 import 'package:fancy_dio_inspector/src/utils/helpers/clipboard_helper.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +25,14 @@ extension ThemeExtensions on BuildContext {
 
 extension ClipboardExtensions on BuildContext {
   void copyToClipboard(String text) {
-    ClipboardHelper.copyToClipboard(text);
+    unawaited(ClipboardHelper.copyToClipboard(text));
   }
 }
 
 extension SnackBarExtensions on BuildContext {
   void showSnackBar(String message) {
-    ScaffoldMessenger.of(this).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(this)
+      ..clearSnackBars()
+      ..showSnackBar(SnackBar(content: Text(message)));
   }
 }

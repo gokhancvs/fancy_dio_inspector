@@ -5,8 +5,8 @@ mixin FancyThemeData {
   static final ThemeData light = ThemeData.light().copyWith(
     colorScheme: ColorScheme.fromSeed(seedColor: FancyColors.turquoise),
     primaryColor: FancyColors.turquoise,
-    indicatorColor: FancyColors.darkCyan,
     appBarTheme: const AppBarTheme(
+      foregroundColor: FancyColors.white,
       backgroundColor: FancyColors.turquoise,
       elevation: 0,
     ),
@@ -14,9 +14,10 @@ mixin FancyThemeData {
       backgroundColor: FancyColors.turquoise,
       elevation: 0,
     ),
-    tabBarTheme: const TabBarTheme(
+    tabBarTheme: const TabBarThemeData(
       labelColor: FancyColors.white,
       unselectedLabelColor: FancyColors.white,
+      indicatorColor: FancyColors.darkCyan,
     ),
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: FancyColors.turquoise,
@@ -28,8 +29,9 @@ mixin FancyThemeData {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        foregroundColor: FancyColors.white,
         backgroundColor: FancyColors.darkCyan,
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(8),
         shape: const StadiumBorder(),
         elevation: 0,
       ),

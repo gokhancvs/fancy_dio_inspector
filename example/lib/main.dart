@@ -98,7 +98,15 @@ class DioClient {
   late final Dio _dio;
 
   void init() {
-    _dio = Dio(BaseOptions(baseUrl: 'https://reqres.in/api'));
+    _dio = Dio(
+      BaseOptions(
+        baseUrl: 'https://reqres.in/api',
+        headers: {
+          'Accept': 'application/json',
+          'x-api-key': 'reqres-free-v1',
+        },
+      ),
+    );
 
     /// Add the `FancyDioInterceptor` to the `Dio` client.
     _dio.interceptors.add(
