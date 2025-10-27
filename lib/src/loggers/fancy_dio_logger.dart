@@ -92,42 +92,38 @@ final class FancyDioLogger {
   void consoleLog({
     required NetworkBaseModel model,
   }) {
-    late final String name;
-    late FancyConsoleTextColors ansiiColor;
     const resetAnsiColor = FancyConsoleTextColors.reset;
 
-    switch (model.runtimeType) {
-      case NetworkRequestModel():
-        name = consoleOptions.requestName;
-        ansiiColor = consoleOptions.requestColor;
-      case NetworkResponseModel():
-        name = consoleOptions.responseName;
-        ansiiColor = consoleOptions.responseColor;
-      case NetworkErrorModel():
-        name = consoleOptions.errorName;
-        ansiiColor = consoleOptions.errorColor;
-      default:
-        throw Exception('Invalid type! ${model.runtimeType}}');
-    }
+    final (name, ansiiColor) = switch (model) {
+      NetworkRequestModel() => (
+          consoleOptions.requestName,
+          consoleOptions.requestColor,
+        ),
+      NetworkResponseModel() => (
+          consoleOptions.responseName,
+          consoleOptions.responseColor,
+        ),
+      NetworkErrorModel() => (
+          consoleOptions.errorName,
+          consoleOptions.errorColor,
+        ),
+    };
 
     /// If [consoleOptions.colorize] is [false], we should reset the color.
-    if (!consoleOptions.colorize) {
-      ansiiColor = FancyConsoleTextColors.reset;
-    }
+    final finalColor =
+        consoleOptions.colorize ? ansiiColor : FancyConsoleTextColors.reset;
 
     final data = model.toClipboardText();
 
     /// [log] function inside `dart:developer` truncates the output for some
     /// reason, so we use [debugPrint] instead as a workaround.
     if (kIsWeb) {
-      final color = ansiiColor.value;
+      final color = finalColor.value;
 
-      debugPrint(
-        '$color$data'.replaceAll('\n', '\n$color'),
-      );
+      debugPrint('$color$data'.replaceAll('\n', '\n$color'));
     } else {
       developer.log(
-        '${ansiiColor.value}$data${resetAnsiColor.value}',
+        '${finalColor.value}$data${resetAnsiColor.value}',
         name: name,
       );
     }

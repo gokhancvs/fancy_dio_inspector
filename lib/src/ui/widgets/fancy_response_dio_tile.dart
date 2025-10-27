@@ -19,28 +19,20 @@ class FancyResponseNetworkTile<T extends NetworkBaseModel>
 
   @override
   Widget build(BuildContext context) {
-    final Widget widget;
-
-    switch (T) {
-      case NetworkResponseModel():
-        final innerComponent = component as NetworkResponseModel;
-        widget = FancyDioTile(
-          title: '$responseTitleText (${innerComponent.statusCode})',
-          description: innerComponent.responseBody,
+    final widget = switch (component) {
+      NetworkResponseModel(:final statusCode, :final responseBody) =>
+        FancyDioTile(
+          title: '$responseTitleText ($statusCode)',
+          description: responseBody,
           options: options,
-        );
-
-      case NetworkErrorModel():
-        final innerComponent = component as NetworkErrorModel;
-        widget = FancyDioTile(
-          title: '$errorTitleText (${innerComponent.statusCode})',
-          description: innerComponent.errorBody,
+        ),
+      NetworkErrorModel(:final statusCode, :final errorBody) => FancyDioTile(
+          title: '$errorTitleText ($statusCode)',
+          description: errorBody,
           options: options,
-        );
-
-      default:
-        return const SizedBox.shrink();
-    }
+        ),
+      _ => const SizedBox.shrink(),
+    };
 
     return Column(children: [const FancyGap.medium(), widget]);
   }
